@@ -1,0 +1,64 @@
+/* ѣ */
+
+body {
+	background-color: white;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.625em;
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	clear: both;
+	margin: 50px auto;
+	width: 1100px;
+}
+
+h1 {
+	color: black;
+	font-size: 3em;
+	font-weight: normal;
+	margin: 0 0 50px 100px;
+	padding: 0;
+}
+
+.items {
+	float: left;
+	width: 900px;
+}
+
+.item {
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 300px;
+	transition: opacity 0.6s;
+	width: 300px;
+}
+
+.item.next_to_central {
+	opacity: 0.8;
+}
+
+.arrow_left, .arrow_right {
+	background-color: #BF8176;
+	color: white;
+	cursor: pointer;
+	float: left;
+	font-size: 2em;
+	height: 100px;
+	line-height: 100px;
+	margin-top: 100px;
+	text-align: center;
+	width: 100px;
+}
+
+.arrow_left:hover, .arrow_right:hover {
+	opacity: 0.9;
+}
+
+p {
+	font-size: 1.2em;
+	margin: 40px 0 0 100px;
+}
+
