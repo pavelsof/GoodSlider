@@ -21,13 +21,13 @@ then you will have a GoodSlider running on its default settings, which means tha
     * `direction`: Either `to_right` or `to_left`. The latter is the default value. 
 * `callbacks`: an object containing user-defined callbacks. There is only one such callback (for now!). 
     * `movement`: Called when the slider movement ends completely. No default value. 
-* `endless`: Boolean determining whether the slider will stop when going to its extreme left or right items. The default value is `false`. 
-* `height`: Pass a string like `200px` if you want to fix the slider’s height to 200 px. The default value is `false`, meaning that GoodSlider will take the height of its items. 
-* `selectors`: an object containing jQuery selectors of the slider’s important DOM elements. 
-    * `container`: GoodSlider will look for items to slide in this DOM element only. The latter will not be affected in any way, so you can even pass body if you want.  The default value is `.slider:first`. 
+* `elements`: an object containing jQuery selectors or objects of the slider’s important DOM elements. 
+    * `container`: GoodSlider will look for items to slide in this DOM element only. The latter will not be affected in any way, so you can pass `body` if you want.  The default value is `.slider:first`. 
     * `items`: These will be wrapped in a dynamically generated DOM element and put to the slide. The default value is `.item`. 
     * `left_arrow`: An event handler will be attached to this element. It must be within the container element. The default value is `.arrow_left`. 
     * `right_arrow`: Same as above, but for the other direction. The default value is `.arrow_right`. 
+* `endless`: Boolean determining whether the slider will stop when going to its extreme left or right items. The default value is `false`. 
+* `height`: Pass a string like `200px` if you want to fix the slider’s height to 200 px. The default value is `false`, meaning that GoodSlider will take the height of its items. 
 * `visible_items`: An integer determining the number of items which will be visible. The default value is `5`. 
 
 So, if you do something like this:
@@ -61,4 +61,4 @@ An alphabetically ordered list of GoodSlider’s methods.
 
 Licence
 ---
-GoodSlider is published under the [Apache Licence](http://www.apache.org/licenses/LICENSE-2.0). 
+GoodSlider is published under the [Apache License](http://www.apache.org/licenses/LICENSE-2.0). 
