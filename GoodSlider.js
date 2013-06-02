@@ -2,7 +2,7 @@
  * GoodSlider 
  * 
  * @author Pavel Sofroniev
- * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Licence
+ * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License
  * @requires jQuery 1.8 or later
  * @version 0.1.0
  */
@@ -40,14 +40,14 @@ var GoodSlider = function(settings) {
 			callbacks: {
 				movement: function() { return; }
 			},
-			endless: false,
-			height: false,
-			selectors: {
+			elements: {
 				container: '.slider:first',
 				items: '.item',
 				left_arrow: '.arrow_left',
 				right_arrow: '.arrow_right'
 			},
+			endless: false,
+			height: false,
 			visible_items: 5
 		}, 
 		
@@ -57,8 +57,16 @@ var GoodSlider = function(settings) {
 			Slider.settings = $.extend(true, Slider.settings, settings);
 			
 			// get acquainted with dom
-			Slider.dom.container = $(Slider.settings.selectors.container);
-			Slider.dom.items = Slider.dom.container.find(Slider.settings.selectors.items);
+			if(Slider.settings.elements.container instanceof jQuery) {
+				Slider.dom.container = Slider.settings.elements.container;
+			} else {
+				Slider.dom.container = $(Slider.settings.elements.container);
+			}
+			if(Slider.settings.elements.items instanceof jQuery) {
+				Slider.dom.items = Slider.settings.elements.items;
+			} else {
+				Slider.dom.items = Slider.dom.container.find(Slider.settings.elements.items);
+			}
 			Slider.dom.items.addClass('good_slider_item');
 			Slider.dom.items.wrapAll('<div class="good_slider_items_world" />');
 			Slider.dom.items_world = Slider.dom.items.parent('.good_slider_items_world');
@@ -84,29 +92,37 @@ var GoodSlider = function(settings) {
 			
 			// css tricks
 			Slider.dom.items.css({
-				clear: 'none',
-				display: 'block',
-				float: 'left'
+				'clear': 'none',
+				'display': 'block',
+				'float': 'left'
 			});
 			Slider.dom.items_world.css({
-				height: height,
-				left: '0px',
-				position: 'absolute',
-				top: '0px',
-				width: Slider.number_of_items * Slider.step + 'px'
+				'height': height,
+				'left': '0px',
+				'position': 'absolute',
+				'top': '0px',
+				'width': Slider.number_of_items * Slider.step + 'px'
 			});
 			Slider.dom.portal.css({
-				height: height,
-				margin: '0 auto',
-				overflow: 'hidden',
-				position: 'relative',
-				width: Slider.step * Slider.settings.visible_items + 'px'
+				'height': height,
+				'margin': '0 auto',
+				'overflow': 'hidden',
+				'position': 'relative',
+				'width': Slider.step * Slider.settings.visible_items + 'px'
 			});
 			
 			// attach event handlers to the arrows
-			Slider.dom.arrow_left = Slider.dom.container.find(Slider.settings.selectors.left_arrow);
+			if(Slider.settings.elements.left_arrow instanceof jQuery) {
+				Slider.dom.arrow_left = Slider.settings.elements.left_arrow;
+			} else {
+				Slider.dom.arrow_left = Slider.dom.container.find(Slider.settings.elements.left_arrow);
+			}
+			if(Slider.settings.elements.right_arrow instanceof jQuery) {
+				Slider.dom.arrow_right = Slider.settings.elements.right_arrow;
+			} else {
+				Slider.dom.arrow_right = Slider.dom.container.find(Slider.settings.elements.right_arrow);
+			}
 			Slider.dom.arrow_left.click({direction: 'to_right'}, Slider.event_handlers.move);
-			Slider.dom.arrow_right = Slider.dom.container.find(Slider.settings.selectors.right_arrow);
 			Slider.dom.arrow_right.click({direction: 'to_left'}, Slider.event_handlers.move);
 			
 			// automatisation
